@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Open a New Account</h2>
+
+<div class="form-group">
+    <label class="control-label col-md-2">Type:</label>
+    <div id="divAccountTypes"></div><br />
+</div>
+
+<div class="form-group">
+    <label class="control-label col-md-2">Transfer From:</label>
+    <div id="divFrom"></div>
+</div>
+
+<div class="form-group">
+    <label class="control-label col-md-2">Currencies:</label>
+    <div id="divCurrencies"></div><br />
+</div>
+
+<div class="form-group">
+    <label class="control-label col-md-2">Balance:</label>
+    <input type="text" class="form-control" id="txtBalance" value="Enter amount in selected currency" />
+</div>
+
+<div class="form-group">
+    <label class="control-label col-md-2">Duration:</label>
+    <div id="divDuration"></div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <input type="button" class="btn btn-primary" value="Open Account" onclick="OpenAccount()" />
+    </div>
+</div>
+
+@section Footer {
+    <script src="~/Scripts/ui/opennewbankaccount.js"></script>
+}

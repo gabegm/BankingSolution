@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Bank Accounts</h2>
+
+<input type="hidden" id="username" value="@HttpContext.Current.User.Identity.Name" />
+
+<div id="divAccountTypes"></div>
+
+<div id="divResult" class="table-responsive"></div>
+
+@section Footer {
+    <script src="~/Scripts/Ui/BankAccountManagement.js"></script>
+}

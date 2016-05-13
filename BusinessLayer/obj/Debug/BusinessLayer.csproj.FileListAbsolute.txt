@@ -1,0 +1,13 @@
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\BusinessLayer\bin\Debug\BusinessLayer.dll
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\BusinessLayer\bin\Debug\BusinessLayer.pdb
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\BusinessLayer\bin\Debug\CommonLayer.dll
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\BusinessLayer\bin\Debug\DataLayer.dll
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\BusinessLayer\bin\Debug\EntityFramework.dll
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\BusinessLayer\bin\Debug\CommonLayer.pdb
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\BusinessLayer\bin\Debug\DataLayer.pdb
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\BusinessLayer\bin\Debug\EntityFramework.xml
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\BusinessLayer\obj\Debug\BusinessLayer.dll
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\BusinessLayer\obj\Debug\BusinessLayer.pdb
+C:\Users\gabri\Documents\Visual Studio 2015\Projects\BankingSolution\BusinessLayer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\gabri\Documents\Visual Studio 2015\Projects\BankingSolution\BusinessLayer\bin\Debug\Newtonsoft.Json.xml

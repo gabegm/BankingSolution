@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Transfer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Transfer</h2>
+
+<div class="form-group">
+    <label class="control-label col-md-2">Transfer From</label>
+    <div id="divFrom"></div>
+</div>
+
+<div class="form-group">
+    <label class="control-label col-md-2">Transfer To</label>
+    <div id="divTo">
+        <input type="text" class="form-control" id="ibanTo" value="Enter IBAN recipient" />
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="control-label col-md-2">Amount</label>
+    <div id="divAmount">
+        <input type="text" class="form-control" id="txtAmount" value="Enter amount to transfer" />
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <input type="button" class="btn btn-primary" value="Transfer" onclick="Transfer()" />
+    </div>
+</div>
+
+@section Footer {
+    <script src="~/Scripts/ui/transferfunds.js"></script>
+}

@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+
+    <script src="~/Scripts/Ui/Registration.js"></script>
+</head>
+<body>
+    <div> 
+        @using (Html.BeginForm())
+        {
+            <span>Username:</span>
+            <input type="text" id="txtUsername" name="username" />
+            <label id="lblUsername"></label>
+            <br />
+
+            <span>Password:</span>
+            <input type="password" id="txtPassword" name="password" />
+            <label id="lblPassword"></label>
+            <br />
+
+            <span>Name:</span>
+            <input type="text" id="txtName" name="name" />
+            <label id="lblName"></label>
+            <br />
+
+            <span>Surname:</span>
+            <input type="text" id="txtSurname" name="surname" />
+            <label id="lblSurname"></label>
+            <br />
+
+            <span>Email:</span>
+            <input type="text" id="txtEmail" name="email" />
+            <label id="lblEmail"></label>
+            <br />
+
+            <input type="submit" id="btnSubmit" value="submit" onclick="return Validate()"/>
+        }
+
+        @ViewBag.Message
+    
+    </div>
+</body>
+</html>

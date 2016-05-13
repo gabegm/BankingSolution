@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Jquery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Jquery</h2>
+
+<input type="button" value="Show" id="btnShow" onclick="Show()" />
+<input type="button" value="Hide" id="btnHide" onclick="Hide()"/>
+
+<div id="divMain">
+    Username:&nbsp;<input type="text" class="inputField" /><br />
+    Password:&nbsp;<input type="text" class="inputField" /><br />
+
+    <input type="checkbox" />Admin<br />
+    <input type="checkbox" />User<br />
+    <input type="checkbox" />Guest<br />
+    <input type="button" value="Submit" id="btnSubmit" />
+    <input type="button" value="Clear" id="btnClear" onclick="Clear()" />
+    <label id="lblMessage"></label>
+</div>
+
+@section Footer {
+    <script src="~/Scripts/Ui/jQueryExample.js"></script>
+}

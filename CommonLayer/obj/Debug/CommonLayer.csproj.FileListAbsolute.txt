@@ -1,0 +1,10 @@
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\CommonLayer\bin\Debug\CommonLayer.dll.config
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\CommonLayer\bin\Debug\CommonLayer.dll
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\CommonLayer\bin\Debug\CommonLayer.pdb
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\CommonLayer\bin\Debug\EntityFramework.dll
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\CommonLayer\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\CommonLayer\bin\Debug\EntityFramework.xml
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\CommonLayer\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\CommonLayer\obj\Debug\CommonLayer.dll
+c:\users\gabri\documents\visual studio 2015\Projects\BankingSolution\CommonLayer\obj\Debug\CommonLayer.pdb
+C:\Users\gabri\Documents\Visual Studio 2015\Projects\BankingSolution\CommonLayer\obj\Debug\CommonLayer.csprojResolveAssemblyReference.cache
