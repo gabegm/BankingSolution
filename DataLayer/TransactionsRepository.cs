@@ -12,9 +12,9 @@ namespace DataLayer
         public TransactionsRepository() : base()
         { }
 
-        public IQueryable<Transaction> GetTransactions(DateTime From, DateTime To, string Username)
+        public IQueryable<Transaction> GetTransactions(DateTime From, DateTime To, string Username, string iban)
         {
-            return Entity.Transactions.Where(t => t.Date > From && t.Date < To);
+            return Entity.Transactions.Where(t => t.Date > From && t.Date < To && t.IbanFrom.Equals(iban));
         }
 
         public void AddTransaction(Transaction t)

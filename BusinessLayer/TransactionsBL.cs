@@ -10,10 +10,10 @@ namespace BusinessLayer
 {
     public class TransactionsBL
     {
-        public IQueryable<Transaction> GetTransactions(DateTime From, DateTime To, string Username)
+        public IQueryable<Transaction> GetTransactions(DateTime From, DateTime To, string Username, string iban)
         {
             //validation
-            return new TransactionsRepository().GetTransactions(From, To, Username);
+            return new TransactionsRepository().GetTransactions(From, To, Username, iban);
         }
 
         public void AddTransaction(Transaction t)

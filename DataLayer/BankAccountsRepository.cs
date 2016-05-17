@@ -17,6 +17,11 @@ namespace DataLayer
             return Entity.AccountTypes;
         }
 
+        public IQueryable<BankAccount> GetBankAccounts()
+        {
+            return Entity.BankAccounts;
+        }
+
         public IQueryable<BankAccount> GetBankAccounts(string username, int accountTypeId)
         {
             return Entity.BankAccounts.Where(x => x.Username_Fk == username && x.AccountType_Fk == accountTypeId);
@@ -47,6 +52,17 @@ namespace DataLayer
         public void Deposit(string iban, decimal amount)
         {
             GetBankAccount(iban).Balance += amount;
+            Entity.SaveChanges();
+        }
+
+        public void UpdateFixed(string iban, decimal ans, string currency)
+        {
+            BankAccount existingBankAccount = this.GetBankAccount(iban);
+
+            BankAccount bankAccount = this.GetBankAccount(iban);
+            bankAccount.Balance = ans;
+
+            Entity.Entry(existingBankAccount).CurrentValues.SetValues(bankAccount);
             Entity.SaveChanges();
         }
     }

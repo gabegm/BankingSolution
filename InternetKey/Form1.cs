@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace InternetKey
@@ -38,7 +39,7 @@ namespace InternetKey
             if (string.IsNullOrEmpty(AllString)) throw new ArgumentNullException();
             byte[] buffer = System.Text.Encoding.UTF8.GetBytes(AllString);
             buffer = System.Security.Cryptography.SHA512.Create().ComputeHash(buffer);
-            return Convert.ToBase64String(buffer).Substring(0, 86); // strip padding
+            return Regex.Replace(Convert.ToBase64String(buffer).Substring(0, 86), "[^0-9a-zA-Z]+", ""); // strip padding and special characters
         }
     }
 }

@@ -18,6 +18,11 @@ namespace BusinessLayer
             return new BankAccountsRepository().GetAccountTypes();
         }
 
+        public IQueryable<BankAccount> GetBankAccounts()
+        {
+            return new BankAccountsRepository().GetBankAccounts();
+        }
+
         public IQueryable<BankAccount> GetBankAccounts(string username, int accountTypeId)
         {
             //validation
@@ -79,6 +84,71 @@ namespace BusinessLayer
             else
             {
                 throw new NotEnoughBalanceException();
+            }
+        }
+
+        public void UpdateAmounts()
+        {
+            decimal working1, working2, working3, ans;
+            working1 = working2 = working3 = ans = 0;
+            DateTime date = DateTime.Today;
+            DateTime closeDate;
+
+            foreach (BankAccount accounts in new BankAccountsBL().GetBankAccounts())
+            {
+                if(accounts.Duration != null)
+                {
+                    if(accounts.Duration == 1)
+                    {
+                        working1 = (Convert.ToDecimal(0.25 / 100)) * accounts.Balance;
+                        working2 = working1 / 12;
+                        working3 = working2 * (85 / 100);
+                        ans = accounts.Balance + working3;
+                        closeDate = accounts.DateOpened.AddMonths(accounts.Duration.Value);
+                        //DateTime test = DateTime.Today.AddMonths(1);
+                        //if(date == test)
+                        if (closeDate == date)
+                        {
+                            new BankAccountsRepository().UpdateFixed(accounts.Iban, ans, accounts.Currency_Fk);
+                        }
+                    }
+                    else if(accounts.Duration == 3)
+                    {
+                        working1 = (Convert.ToDecimal(1.65 / 100)) * accounts.Balance;
+                        working2 = working1 / 12;
+                        working3 = working2 * (85 / 100);
+                        ans = accounts.Balance + working3;
+                        closeDate = accounts.DateOpened.AddMonths(accounts.Duration.Value);
+                        if (date == closeDate)
+                        {
+                            new BankAccountsRepository().UpdateFixed(accounts.Iban, ans, accounts.Currency_Fk);
+                        }
+                    }
+                    else if (accounts.Duration == 6)
+                    {
+                        working1 = (Convert.ToDecimal(1.75 / 100)) * accounts.Balance;
+                        working2 = working1 / 2;
+                        working3 = working2 * (85 / 100);
+                        ans = accounts.Balance + working3;
+                        closeDate = accounts.DateOpened.AddMonths(accounts.Duration.Value);
+                        if (date == closeDate)
+                        {
+                            new BankAccountsRepository().UpdateFixed(accounts.Iban, ans, accounts.Currency_Fk);
+                        }
+                    }
+                    else if (accounts.Duration == 12)
+                    {
+                        working1 = (Convert.ToDecimal(2 / 100)) * accounts.Balance;
+                        working2 = working1 / 1;
+                        working3 = working2 * (85 / 100);
+                        ans = accounts.Balance + working3;
+                        closeDate = accounts.DateOpened.AddMonths(accounts.Duration.Value);
+                        if (date == closeDate)
+                        {
+                            new BankAccountsRepository().UpdateFixed(accounts.Iban, ans, accounts.Currency_Fk);
+                        }
+                    }
+                }
             }
         }
     }

@@ -193,16 +193,16 @@ namespace BankingAPI.Controllers
             return message;
         }
 
-        public HttpResponseMessage GetTransactions(string username, DateTime from, DateTime to)
+        public HttpResponseMessage GetTransactions(string username, string iban, DateTime from, DateTime to)
         {
             HttpResponseMessage message;
             try
             {
-                List<Transaction> transactions = new TransactionsBL().GetTransactions(from, to, username).ToList();
+                List<Transaction> transactions = new TransactionsBL().GetTransactions(from, to, username, iban).ToList();
                 //i am returning a list of anonymous objects on the fly
                 //because an anonymous is serialized without any problems
                 var result = from t in transactions
-                             select new { Username = t.Username, Balance = t.Amount, Currency = t.Currency_Fk, Date = DateTime.Today, IbanTo = t.IbanTo, Description = t.Description, IbanFrom = t.IbanFrom };
+                             select new { Username = t.Username, Amount = t.Amount, Currency = t.Currency_Fk, Date = DateTime.Today.ToString("dd-MM-yyy"), IbanTo = t.IbanTo, Description = t.Description, IbanFrom = t.IbanFrom };
 
                 message = Request.CreateResponse(HttpStatusCode.OK, result);
             }
