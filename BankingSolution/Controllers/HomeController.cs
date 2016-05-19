@@ -14,24 +14,5 @@ namespace BankingSolution.Controllers
         {
             return View();
         }
-
-        [HttpGet]
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Register(string username, string password, string name, string surname, string email)
-        {
-            //you process your request e.g. you call the webapi method
-            ViewBag.Message = "User was registered successfully";
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            return View();
-        }
     }
 }

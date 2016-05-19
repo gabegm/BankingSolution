@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
+using BusinessLayer;
 
 namespace BankingSolution.Controllers
 {
@@ -29,7 +26,7 @@ namespace BankingSolution.Controllers
         [Authorize]
         public ActionResult Transfer()
         {
-            return View();
+            return View(new BankAccountsBL().GetUserBankAccounts(HttpContext.User.Identity.Name));
         }
 
         [HttpGet]

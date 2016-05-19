@@ -27,6 +27,16 @@ namespace DataLayer
             return Entity.BankAccounts.Where(x => x.Username_Fk == username && x.AccountType_Fk == accountTypeId);
         }
 
+        public IQueryable<BankAccount> GetUserBankAccounts(string username)
+        {
+            return Entity.BankAccounts.Where(x => x.Username_Fk == username);
+        }
+
+        public BankAccount GetBankAccounts(string iban)
+        {
+            return Entity.BankAccounts.SingleOrDefault((x => x.Iban == iban));
+        }
+
         public void OpenNewBankAccount(BankAccount b)
         {
             Entity.BankAccounts.Add(b);

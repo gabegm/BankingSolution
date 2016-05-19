@@ -1,10 +1,7 @@
 ﻿using DataLayer;
 using CommonLayer;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 using Newtonsoft.Json;
 using CommonLayer.CustomExceptions;
@@ -13,6 +10,11 @@ namespace BusinessLayer
 {
     public class BankAccountsBL
     {
+        public BankAccountsBL()
+        {
+            //UpdateAmounts();
+        }
+
         public IQueryable<AccountType> GetAccountTypes()
         {
             return new BankAccountsRepository().GetAccountTypes();
@@ -25,8 +27,36 @@ namespace BusinessLayer
 
         public IQueryable<BankAccount> GetBankAccounts(string username, int accountTypeId)
         {
-            //validation
-            return new BankAccountsRepository().GetBankAccounts(username, accountTypeId);
+            //this.UpdateAmounts();
+
+            if(username != null && accountTypeId != -1)
+            {
+                return new BankAccountsRepository().GetBankAccounts(username, accountTypeId);
+            }
+
+            return null;
+        }
+
+        public IQueryable<BankAccount> GetUserBankAccounts(string username)
+        {
+            //this.UpdateAmounts();
+
+            if (username != null)
+            {
+                return new BankAccountsRepository().GetUserBankAccounts(username);
+            }
+
+            return null;
+        }
+
+        public BankAccount GetBankAccounts(string iban)
+        {
+            if(iban != null)
+            {
+                return new BankAccountsRepository().GetBankAccounts(iban);
+            }
+
+            return null;
         }
 
         public void OpenNewBankAccount(BankAccount b)
@@ -58,8 +88,6 @@ namespace BusinessLayer
                 return rateAsDouble;
             }
         }
-
-
 
         public void TransferFunds(string ibanFrom, string ibanTo, decimal amount)
         {
@@ -100,9 +128,9 @@ namespace BusinessLayer
                 {
                     if(accounts.Duration == 1)
                     {
-                        working1 = (Convert.ToDecimal(0.25 / 100)) * accounts.Balance;
+                        working1 = (Convert.ToDecimal(0.25M / 100M)) * accounts.Balance;
                         working2 = working1 / 12;
-                        working3 = working2 * (85 / 100);
+                        working3 = working2 * (85M / 100M);
                         ans = accounts.Balance + working3;
                         closeDate = accounts.DateOpened.AddMonths(accounts.Duration.Value);
                         //DateTime test = DateTime.Today.AddMonths(1);
@@ -114,9 +142,9 @@ namespace BusinessLayer
                     }
                     else if(accounts.Duration == 3)
                     {
-                        working1 = (Convert.ToDecimal(1.65 / 100)) * accounts.Balance;
-                        working2 = working1 / 12;
-                        working3 = working2 * (85 / 100);
+                        working1 = (Convert.ToDecimal(1.65M / 100M)) * accounts.Balance;
+                        working2 = working1 / 12M;
+                        working3 = working2 * (85 / 100M);
                         ans = accounts.Balance + working3;
                         closeDate = accounts.DateOpened.AddMonths(accounts.Duration.Value);
                         if (date == closeDate)
@@ -126,9 +154,9 @@ namespace BusinessLayer
                     }
                     else if (accounts.Duration == 6)
                     {
-                        working1 = (Convert.ToDecimal(1.75 / 100)) * accounts.Balance;
-                        working2 = working1 / 2;
-                        working3 = working2 * (85 / 100);
+                        working1 = (Convert.ToDecimal(1.75M / 100M)) * accounts.Balance;
+                        working2 = working1 / 2M;
+                        working3 = working2 * (85M / 100M);
                         ans = accounts.Balance + working3;
                         closeDate = accounts.DateOpened.AddMonths(accounts.Duration.Value);
                         if (date == closeDate)
@@ -138,9 +166,9 @@ namespace BusinessLayer
                     }
                     else if (accounts.Duration == 12)
                     {
-                        working1 = (Convert.ToDecimal(2 / 100)) * accounts.Balance;
-                        working2 = working1 / 1;
-                        working3 = working2 * (85 / 100);
+                        working1 = (Convert.ToDecimal(2M / 100M)) * accounts.Balance;
+                        working2 = working1 / 1M;
+                        working3 = working2 * (85M / 100M);
                         ans = accounts.Balance + working3;
                         closeDate = accounts.DateOpened.AddMonths(accounts.Duration.Value);
                         if (date == closeDate)

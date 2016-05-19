@@ -200,6 +200,7 @@
     <Content Include="Scripts\jquery-2.2.3.min.map" />
     <Content Include="Views\BankAccounts\Transfer.cshtml" />
     <Content Include="Views\BankAccounts\Transactions.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -210,6 +211,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{13da5327-f6c1-4153-9c85-a915930c4340}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonLayer\CommonLayer.csproj">
+      <Project>{d774617d-3075-446b-a78e-39f918af5639}</Project>
+      <Name>CommonLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

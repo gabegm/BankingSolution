@@ -2,13 +2,25 @@
 
 $(document).ready(function () {
     getBankAccounts();
+
+    $('.drag').draggable({
+        revert: true,
+        helper: 'clone'
+    });
+
+    $("#ibanTo").droppable({
+        drop: function (event, ui) {
+            this.value = $(ui.draggable).text();
+        }
+    });
 });
 
 function Transfer() {
+    var username = $("#hiddenUsername").val();
     var ibanFrom = $("#ddlAccounts").val();
     var ibanTo = $("#ibanTo").val();
     var amount = $("#txtAmount").val();
-    var url = "http://localhost:51901/api/BankAccountsApi/TransferFunds/?ibanFrom=" + ibanFrom + "&ibanTo=" + ibanTo + "&amount=" + amount;
+    var url = "http://localhost:51901/api/BankAccountsApi/TransferFunds/?username=" + username + "&from=" + ibanFrom + "&to=" + ibanTo + "&amount=" + amount;
 
     $.getJSON(url, function (data) {
         alert("Transfer successful");
@@ -31,7 +43,7 @@ function getBankAccounts() {
                 table = "<p>No Bank Accounts To Transfer From</p>";
             }
             else {
-                table = "<select onchange=\"getBankAccounts()\"  id=\"ddlAccounts\" class=\"form-control\">";
+                table = "<select id=\"ddlAccounts\" class=\"form-control\">";
 
                 table += "<option value=\"-1\">Select Account</option>";
 

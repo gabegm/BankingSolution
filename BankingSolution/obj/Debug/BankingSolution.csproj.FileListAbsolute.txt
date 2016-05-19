@@ -49,3 +49,11 @@ C:\Users\gabri\Documents\Visual Studio 2015\Projects\BankingSolution\BankingSolu
 C:\Users\gabri\Documents\Visual Studio 2015\Projects\BankingSolution\BankingSolution\bin\roslyn\vbc.exe.config
 C:\Users\gabri\Documents\Visual Studio 2015\Projects\BankingSolution\BankingSolution\bin\roslyn\vbc.rsp
 C:\Users\gabri\Documents\Visual Studio 2015\Projects\BankingSolution\BankingSolution\obj\Debug\BankingSolution.csprojResolveAssemblyReference.cache
+C:\Users\gabri\Documents\Visual Studio 2015\Projects\BankingSolution\BankingSolution\bin\CommonLayer.dll
+C:\Users\gabri\Documents\Visual Studio 2015\Projects\BankingSolution\BankingSolution\bin\CommonLayer.pdb
+C:\Users\gabri\Documents\Visual Studio 2015\Projects\BankingSolution\BankingSolution\bin\BusinessLayer.dll
+C:\Users\gabri\Documents\Visual Studio 2015\Projects\BankingSolution\BankingSolution\bin\DataLayer.dll
+C:\Users\gabri\Documents\Visual Studio 2015\Projects\BankingSolution\BankingSolution\bin\Newtonsoft.Json.dll
+C:\Users\gabri\Documents\Visual Studio 2015\Projects\BankingSolution\BankingSolution\bin\BusinessLayer.pdb
+C:\Users\gabri\Documents\Visual Studio 2015\Projects\BankingSolution\BankingSolution\bin\DataLayer.pdb
+C:\Users\gabri\Documents\Visual Studio 2015\Projects\BankingSolution\BankingSolution\bin\Newtonsoft.Json.xml

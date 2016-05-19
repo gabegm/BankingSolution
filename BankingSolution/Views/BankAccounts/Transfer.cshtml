@@ -1,4 +1,5 @@
-﻿
+﻿@model IQueryable<CommonLayer.BankAccount>
+
 @{
     ViewBag.Title = "Transfer";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,14 +15,14 @@
 <div class="form-group">
     <label class="control-label col-md-2">Transfer To</label>
     <div id="divTo">
-        <input type="text" class="form-control" id="ibanTo" value="Enter IBAN recipient" />
+        <input type="text" class="form-control" id="ibanTo" placeholder="Enter IBAN recipient" />
     </div>
 </div>
 
 <div class="form-group">
     <label class="control-label col-md-2">Amount</label>
     <div id="divAmount">
-        <input type="text" class="form-control" id="txtAmount" value="Enter amount to transfer" />
+        <input type="text" class="form-control" id="txtAmount" placeholder="Enter amount to transfer" />
     </div>
 </div>
 
@@ -29,6 +30,46 @@
     <div class="col-sm-offset-2 col-sm-10">
         <input type="button" class="btn btn-primary" value="Transfer" onclick="Transfer()" />
     </div>
+</div>
+
+<div class="table-responsive" style="overflow-x:inherit; padding-top: 5%">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("IBAN")
+                </th>
+                <th>
+                    @Html.DisplayName("Balance")
+                </th>
+                <th>
+                    @Html.DisplayName("Currency")
+                </th>
+                <th>
+                    @Html.DisplayName("Date Opened")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CommonLayer.BankAccount account in Model)
+            {
+                <tr>
+                    <td>
+                        <div class="drag">@Html.DisplayFor(modelItem => account.Iban)</div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => account.Balance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => account.Currency_Fk)
+                    </td>
+                    <td>
+                        @account.DateOpened.ToString("dd-MM-yyyy")
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 
 @section Footer {

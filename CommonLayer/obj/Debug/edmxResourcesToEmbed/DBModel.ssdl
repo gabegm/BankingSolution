@@ -15,7 +15,7 @@
     <Property Name="Currency_Fk" Type="varchar" MaxLength="3" Nullable="false" />
     <Property Name="Balance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="Username_Fk" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="DateOpened" Type="datetime" Nullable="false" />
+    <Property Name="DateOpened" Type="date" Nullable="false" />
     <Property Name="AccountType_Fk" Type="int" Nullable="false" />
     <Property Name="AccountNumber" Type="bigint" Nullable="false" />
     <Property Name="Duration" Type="int" />

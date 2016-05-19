@@ -16,7 +16,10 @@ textarea {
     max-width: 280px;
 }
 
-.table-responsive {
-    overflow-x:inherit;
-    padding-top: 5%;
+.hero-spacer {
+    margin-top: 50px;
+}
+
+.hero-feature {
+    margin-bottom: 30px;
 }

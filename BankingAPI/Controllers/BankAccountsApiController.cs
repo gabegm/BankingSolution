@@ -51,6 +51,28 @@ namespace BankingAPI.Controllers
                 //i am returning a list of anonymous objects on the fly
                 //because an anonymous is serialized without any problems
                 var result = from a in accounts
+                             select new { Iban = a.Iban, Balance = a.Balance, Currency = a.Currency_Fk, DateOpened = a.DateOpened.ToString("dd-MM-yyy") };
+
+                message = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch
+            {
+                message = Request.CreateErrorResponse(HttpStatusCode.NotFound,
+                    new HttpError("Error occurred. Please Try again later")
+                    );
+            }
+            return message;
+        }
+
+        public HttpResponseMessage GetUserBankAccounts(string username)
+        {
+            HttpResponseMessage message;
+            try
+            {
+                List<BankAccount> accounts = new BankAccountsBL().GetUserBankAccounts(username).ToList();
+                //i am returning a list of anonymous objects on the fly
+                //because an anonymous is serialized without any problems
+                var result = from a in accounts
                              select new { Iban = a.Iban, Balance = a.Balance, Currency = a.Currency_Fk, DateOpened = a.DateOpened.ToShortDateString() };
 
                 message = Request.CreateResponse(HttpStatusCode.OK, result);
@@ -85,7 +107,7 @@ namespace BankingAPI.Controllers
                     Balance = balance,
                     Currency_Fk = currency,
                     AccountType_Fk = type,
-                    DateOpened = DateTime.Now,
+                    DateOpened = DateTime.Today,
                     Iban = Guid.NewGuid().ToString(),
                     Duration = dur
                 };
@@ -133,7 +155,7 @@ namespace BankingAPI.Controllers
         }
 
         [HttpGet]
-        public HttpResponseMessage TransferFunds(string ibanFrom, string ibanTo, decimal amount)
+        public HttpResponseMessage TransferFunds(string username, string from, string to, decimal amount)
         {
             //http://localhost:63723/api/BankAccountsApi/TransferFunds/?ibanFrom=56c61dfc-7c2a-41a6-8d50-327ec264bd03&ibanTo=2&amount=10
 
@@ -143,18 +165,20 @@ namespace BankingAPI.Controllers
             {
                 BankAccountsBL bankAccountsBL = new BankAccountsBL();
 
-                bankAccountsBL.TransferFunds(ibanFrom, ibanTo, amount);
+                bankAccountsBL.TransferFunds(from, to, amount);
 
                 TransactionsBL transactionsBL = new TransactionsBL();
 
+                BankAccount ba = bankAccountsBL.GetBankAccounts(from);
+
                 Transaction t = new Transaction()
                 {
-                    //Username = username,
+                    Username = username,
                     Amount = amount,
-                    //Currency_Fk = currency,
+                    Currency_Fk = ba.Currency_Fk,
                     Date = DateTime.Today,
-                    IbanFrom = ibanTo,
-                    IbanTo = ibanFrom,
+                    IbanFrom = from,
+                    IbanTo = to,
                     Description = "Funds transfered"
                 };
 

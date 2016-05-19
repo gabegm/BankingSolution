@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CommonLayer;
 using CommonLayer.CustomExceptions;
 using DataLayer;
+using System.Text.RegularExpressions;
 
 namespace BusinessLayer
 {
@@ -56,6 +57,15 @@ namespace BusinessLayer
             }
 
             return false;
+        }
+
+        public static string Encrypt(string Password, string Date)
+        {
+            string AllString = Password + Date;
+            if (string.IsNullOrEmpty(AllString)) throw new ArgumentNullException();
+            byte[] buffer = System.Text.Encoding.UTF8.GetBytes(AllString);
+            buffer = System.Security.Cryptography.SHA512.Create().ComputeHash(buffer);
+            return Regex.Replace(Convert.ToBase64String(buffer).Substring(0, 86), "[^0-9a-zA-Z]+", ""); // strip padding and special characters
         }
     }
 }
